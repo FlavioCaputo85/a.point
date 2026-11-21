@@ -1,38 +1,26 @@
-# Arqui — Cruzadinha Computacional
+# A.point — Conexões de Arquitetura
 
-Jogo de revisão de arquitetura computacional, feito exclusivamente com HTML, CSS e JavaScript, sem bibliotecas, fontes externas ou etapa de instalação.
+Jogo interativo de revisão para a disciplina de Arquitetura Computacional. O objetivo é descobrir 16 conceitos a partir das pistas e completar o tabuleiro conectando as palavras.
 
-## Site publicado
-
-PREENCHA AQUI com o endereço real após publicar no GitHub Pages.
+O projeto usa somente **HTML, CSS e JavaScript puros**. Não depende de bibliotecas, frameworks, fontes externas, instalação ou servidor: basta abrir `index.html` no navegador.
 
 ## Como jogar
 
-Abra index.html no navegador. Escolha uma pista ou uma casa e digite. Letras são convertidas para maiúsculas, sem acentos. Cada cruzamento compartilha a mesma casa.
+1. Escolha uma pista na lista ou clique em uma casa do tabuleiro.
+2. Digite as letras diretamente nas casas. As respostas são aceitas em maiúsculas e sem acentos.
+3. Em uma casa compartilhada por duas palavras, pressione **Espaço** ou clique duas vezes para alternar entre horizontal e vertical.
+4. Use as **setas** para navegar pelas casas. Pressione **Enter** para selecionar a próxima pista.
+5. Clique em **Conferir respostas** para ver quais palavras estão corretas, incompletas ou precisam de revisão. O contador e a barra mostram o total de acertos.
+6. Use **Reiniciar** para limpar a partida e começar novamente.
 
-- Setas: navegar e selecionar a direção.
-- Espaço: alternar direção em cruzamentos.
-- Backspace: apagar; numa casa vazia, voltar e apagar a anterior.
-- Enter: próxima palavra.
-- Também é possível colar uma resposta na palavra selecionada.
-- Conferir circuito: conta palavras completas corretas e apresenta o resultado em cada pista. Casas verdes pertencem a pelo menos uma palavra correta; casas vermelhas preenchidas precisam de revisão. Uma casa verde não garante que ambas as palavras do cruzamento estejam certas: consulte a indicação de cada pista.
-- Ao editar depois de conferir, o resultado anterior é limpo; confira novamente.
-- Reiniciar: pede confirmação e limpa letras, resultados e cronômetro.
-- Som opcional, desligado por padrão. O tempo começa ao inserir a primeira letra. Não há salvamento: recarregar a página inicia outra partida.
-
-## Estrutura
-
-- index.html: estrutura e interface.
-- style.css: vidro translúcido, layout adaptável e animações.
-- script.js: tabuleiro fixo de 16 palavras, pistas, interação e validação.
-- README.md: documentação.
-
-O tabuleiro tem 13 linhas e 17 colunas. Todas as palavras estão conectadas. Em telas pequenas, deslize horizontalmente a área do tabuleiro. Os efeitos respeitam a preferência de redução de movimento. A transparência tem fundo alternativo quando o navegador não suporta desfoque.
+O cronômetro começa na primeira letra inserida. O som é opcional e começa desligado. Também é possível colar uma resposta inteira a partir da primeira casa da palavra selecionada.
 
 ## Palavras e pistas
 
-| Nº | Direção | Palavra | Pista |
-|---|---|---|---|
+O tabuleiro usa as 16 palavras do enunciado. Todas se cruzam com pelo menos uma outra palavra.
+
+| Nº | Direção | Resposta | Pista |
+|---:|---|---|---|
 | 1 | Horizontal | MEMORIADEMASSA | Conserva grandes volumes de arquivos e programas mesmo quando o computador está desligado. |
 | 2 | Vertical | DUALCORE | Processador com dois núcleos físicos de execução. |
 | 3 | Horizontal | CACHE | Mantém cópias de informações frequentemente acessadas para reduzir o tempo de espera do processador. |
@@ -50,33 +38,38 @@ O tabuleiro tem 13 linhas e 17 colunas. Todas as palavras estão conectadas. Em 
 | 14 | Vertical | RAM | Guarda temporariamente programas em execução; seu conteúdo desaparece sem energia. |
 | 15 | Horizontal | FLASH | Tecnologia não volátil utilizada em pendrives, com apagamento realizado em blocos. |
 
-As pistas têm até 15 palavras. Revise a terminologia com o e-book da disciplina antes da entrega: esse material não foi fornecido junto ao enunciado.
+As pistas foram mantidas no projeto original. O enunciado recomenda conferir a terminologia com o e-book da disciplina; esse e-book não veio junto dos arquivos recebidos.
 
-## Publicação
+## Arquivos
 
-1. Crie um repositório público chamado arqcomp-cruzadinha.
-2. Desenvolva e versione o projeto ao longo de pelo menos dois dias, com no mínimo seis commits reais. Não basta enviar tudo em um único commit.
-3. Coloque os quatro arquivos na raiz, com index.html diretamente nela.
-4. Em Settings → Pages, escolha Deploy from a branch, main e / (root). Salve.
-5. Copie o endereço informado pelo GitHub Pages e atualize a seção Site publicado deste README.
-6. Teste o site em janela anônima, incluindo digitação, conferência e reinício.
-7. Envie ao Moodle somente o endereço do site, não o endereço do repositório.
+- `index.html` — estrutura da página e componentes do jogo.
+- `style.css` — identidade visual, cores, animações e layout responsivo.
+- `script.js` — tabuleiro, navegação, pistas, cronômetro, validação, pontuação, sons e celebração.
+- `README.md` — documentação e instruções de publicação.
 
-Não inclua nome completo, RA, e-mail, telefone ou outros dados pessoais nos arquivos públicos. O nome informado no pedido foi omitido intencionalmente.
+## Publicação no GitHub Pages
 
-## Sugestão de etapas de versionamento
+1. Crie um repositório público chamado `arqcomp-cruzadinha`.
+2. Envie os quatro arquivos para a raiz do repositório, mantendo `index.html` na raiz.
+3. Em **Settings → Pages**, escolha **Deploy from a branch**, selecione a branch `main` e a pasta `/ (root)`, e salve.
+4. Aguarde a publicação e teste o endereço em uma janela anônima.
+5. Atualize esta seção com o endereço real do site publicado.
+6. Entregue no Moodle somente o link do site, conforme o enunciado.
 
-Use estas mensagens apenas quando as alterações correspondentes forem realmente realizadas. Este pacote não cria histórico Git e não satisfaz sozinho a exigência de commits em dias diferentes.
+**Site publicado:** ainda não publicado.
 
-Dia 1:
-- feat: cria estrutura inicial da página
-- feat: adiciona tabuleiro e pistas numeradas
-- feat: implementa digitação e navegação
+## Versionamento
 
-Dia 2:
-- feat: implementa conferência e reinício
-- style: adiciona vidro translúcido e ajustes responsivos
-- docs: documenta regras e endereço publicado
+O enunciado pede pelo menos seis commits reais distribuídos em dois dias diferentes. O ZIP não cria esse histórico automaticamente. Faça commits ao longo do desenvolvimento, por exemplo:
 
-Se houver correções reais, registre-as com fix: descrição curta.
-# a.
+**Dia 1**
+- `feat: cria estrutura inicial da cruzadinha`
+- `feat: adiciona tabuleiro e pistas numeradas`
+- `feat: implementa navegação pelas casas`
+
+**Dia 2**
+- `feat: implementa conferência e pontuação`
+- `style: reformula identidade visual e animações`
+- `docs: atualiza instruções e documentação`
+
+Use essas mensagens somente quando as alterações correspondentes tiverem sido feitas. Não inclua RA, e-mail, telefone ou outros dados pessoais no repositório público.
