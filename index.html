@@ -1,146 +1,86 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f5f1e7">
-  <meta name="description" content="Um jogo interativo para revisar conceitos de Arquitetura Computacional. Resolva as pistas e conecte os 16 termos.">
-  <title>A.POINT — Conexões de Arquitetura</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A.point (waypoint)</title>
+<link rel="stylesheet" href="style.css">
+<script src="script.js" defer></script>
+<script src="game.js" defer></script>
 </head>
 <body>
-  <div class="page-noise" aria-hidden="true"></div>
-  <div class="deco deco-cross" aria-hidden="true">＋</div>
-  <div class="deco deco-circle" aria-hidden="true"></div>
+<div id="celebration" aria-hidden="true"></div>
 
-  <main class="site-shell">
-    <header class="topbar">
-      <a class="brand" href="./" aria-label="Arqui, página inicial">
-        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-        <span>A<span class="brand-period">.</span>point</span>
-      </a>
-      <div class="topbar-center"><span class="topbar-line"></span> LABORATÓRIO DE ARQUITETURA <span class="topbar-line"></span></div>
-      <button id="sound" class="sound-button" type="button" aria-pressed="false" aria-label="Ativar sons do jogo">
-        <span class="sound-icon" aria-hidden="true">♪</span><span id="sound-state">SOM OFF</span>
-      </button>
-    </header>
+<section id="s-title" class="screen on">
+  <h1 class="logo">A.point</h1><p class="sub">(waypoint)</p>
+  <div id="deco" class="row"></div>
+  <button class="btn blink" id="start">▶ APERTE START</button>
+</section>
 
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-copy">
-        <div class="eyebrow"><span class="eyebrow-dot"></span> DESAFIO INTERATIVO <span class="eyebrow-slash">/</span> SPRINT 03</div>
-        <h1 id="hero-title">Pense como<br>um <span>computador.</span></h1>
-        <p>Leia as pistas, encontre os conceitos e conecte tudo. Cada letra coloca mais uma peça no lugar.</p>
-        <div class="hero-facts" aria-label="Informações do desafio">
-          <div class="hero-fact"><strong>16</strong><span>conceitos</span></div>
-          <div class="fact-divider"></div>
-          <div class="hero-fact"><strong>02</strong><span>direções</span></div>
-          <div class="fact-divider"></div>
-          <div class="hero-fact"><strong>01</strong><span>circuito</span></div>
-        </div>
+<section id="s-char" class="screen">
+  <h2>ESCOLHA SEU PERSONAGEM</h2>
+  <div id="chars" class="cards"></div>
+</section>
+
+<section id="s-school" class="screen">
+  <h2>ONDE VOCÊ ESTUDA?</h2>
+  <div class="cards">
+    <button class="card" id="fiap"><span id="logo-fiap"></span>FIAP</button>
+    <button class="card" id="sptech"><span id="logo-sptech"></span>SPTECH</button>
+  </div>
+  <p id="nope" class="msg red" hidden>PARECE QUE VOCÊ NÃO É DIGNO DE JOGAR O JOGO!</p>
+</section>
+
+<section id="s-item" class="screen">
+  <h2>ESCOLHA SEU ITEM</h2>
+  <div id="items" class="cards"></div>
+</section>
+
+<section id="s-intro" class="screen">
+  <div class="box"><div id="intro-art" class="row"></div>
+  <p class="msg">VOCÊ ESCOLHEU UM ITEM MUITO REQUISITADO!<br>AGORA É A HORA DE BATALHAR PARA CONSEGUIR ESSE ITEM!</p></div>
+  <button class="btn" id="go">⚔ BATALHAR!</button>
+</section>
+
+<section id="s-game" class="screen">
+  <header class="hud box"><span id="hud-art" class="row"></span><span id="hud-text"></span>
+    <span class="grow"></span>
+    <span id="hearts" class="row"></span>
+    <span>TEMPO <strong id="timer">00:00</strong></span>
+    <button id="sound" class="btn small" type="button" aria-pressed="false"><span id="sound-state">SOM OFF</span></button>
+  </header>
+  <div class="workspace">
+    <div class="box">
+      <div class="board-scroll"><div id="board" aria-label="Tabuleiro da cruzadinha"></div></div>
+      <div class="box clue-now"><b>PISTA <span id="active-clue-number">01</span></b> <small id="active-clue-meta"></small><p id="current-clue"></p></div>
+      <div class="actions">
+        <button class="btn" id="check" type="button">CONFERIR</button>
+        <button class="btn" id="hint" type="button">DICA (3)</button>
+        <button class="btn red" id="reset" type="button">REINICIAR</button>
       </div>
-
-      <div class="hero-visual" aria-hidden="true">
-        <div class="visual-caption caption-top">THINK<br>IN SYSTEMS</div>
-        <div class="visual-chip">
-          <div class="chip-pins pins-top"><i></i><i></i><i></i><i></i><i></i></div>
-          <div class="chip-pins pins-bottom"><i></i><i></i><i></i><i></i><i></i></div>
-          <div class="chip-pins pins-left"><i></i><i></i><i></i></div>
-          <div class="chip-pins pins-right"><i></i><i></i><i></i></div>
-          <span class="chip-label">A.</span>
-          <span class="chip-core">CPU</span>
-          <span class="chip-sub">CORE / 001</span>
-        </div>
-        <div class="visual-sticker"><span>NO</span><strong>SHORT<br> CIRCUITS</strong><b>✳</b></div>
-        <div class="visual-caption caption-bottom">INPUT → LOGIC → OUTPUT</div>
-      </div>
-    </section>
-
-    <div class="section-kicker"><span>01</span> SUA MISSÃO <i></i><span class="section-kicker-note">16 TERMOS ESCONDIDOS NO CIRCUITO</span></div>
-
-    <section class="workspace" aria-label="Jogo de cruzadinha">
-      <section class="game-card board-card" aria-labelledby="board-heading">
-        <div class="card-topline">
-          <div class="live-label"><span class="live-dot"></span> SISTEMA PRONTO</div>
-          <div class="timer-wrap"><span class="timer-label">TEMPO</span><strong id="timer" aria-label="Tempo de jogo">00:00</strong></div>
-        </div>
-
-        <div class="board-heading-row">
-          <div>
-            <div class="micro-label">ÁREA DE PROCESSAMENTO</div>
-            <h2 id="board-heading">Monte o circuito<span>.</span></h2>
-          </div>
-          <div class="board-index">GRID<br><strong>13 × 17</strong></div>
-        </div>
-
-        <div class="board-stage">
-          <div class="board-scroll" tabindex="0" aria-label="Área rolável do tabuleiro">
-            <div id="board" aria-label="Tabuleiro da cruzadinha"></div>
-          </div>
-        </div>
-        <div class="scroll-hint" aria-hidden="true">↔ DESLIZE O TABULEIRO PARA OS LADOS</div>
-
-        <div class="board-legend" aria-label="Legenda do tabuleiro">
-          <span><i class="legend-swatch swatch-selected"></i> palavra selecionada</span>
-          <span><i class="legend-swatch swatch-correct"></i> correta</span>
-          <span><i class="legend-swatch swatch-wrong"></i> revisar</span>
-        </div>
-
-        <div class="current-clue-wrap">
-          <div class="current-clue-marker">PISTA<br><strong id="active-clue-number">01</strong></div>
-          <div class="current-clue-copy">
-            <div id="active-clue-meta" class="current-clue-meta">HORIZONTAL · 14 LETRAS</div>
-            <p id="current-clue">Conserva grandes volumes de arquivos e programas mesmo quando o computador está desligado.</p>
-          </div>
-          <span class="clue-corner" aria-hidden="true">↘</span>
-        </div>
-
-        <div class="game-actions">
-          <button class="check-button" id="check" type="button"><span>CONFERIR RESPOSTAS</span><b aria-hidden="true">↗</b></button>
-          <button class="reset-button" id="reset" type="button"><span aria-hidden="true">↻</span> REINICIAR</button>
-        </div>
-
-        <div class="score-area">
-          <div class="score-topline"><span id="score" role="status" aria-live="polite">0 de 16 palavras corretas</span><strong id="percent">0%</strong></div>
-          <div class="progress-track" role="progressbar" aria-label="Palavras corretas" aria-valuemin="0" aria-valuemax="16" aria-valuenow="0"><div id="progress"></div></div>
-          <p id="feedback" aria-live="polite">O circuito está esperando sua primeira conexão.</p>
-        </div>
-      </section>
-
-      <aside class="clues-card" aria-labelledby="clues-heading">
-        <div class="clues-card-head">
-          <div class="micro-label">BANCO DE DADOS / PISTAS</div>
-          <div class="clues-title-row"><h2 id="clues-heading">Encontre a<br><span>conexão.</span></h2><div class="clues-count"><strong>16</strong><span>PISTAS</span></div></div>
-          <p>Escolha uma pista para destacar suas casas no tabuleiro.</p>
-        </div>
-        <div class="tabs" role="group" aria-label="Filtrar pistas">
-          <button class="active" data-filter="all" type="button" aria-pressed="true">TODAS <span>16</span></button>
-          <button data-filter="H" type="button" aria-pressed="false">HORIZONTAIS <span>7</span></button>
-          <button data-filter="V" type="button" aria-pressed="false">VERTICAIS <span>9</span></button>
-        </div>
-        <div id="clues" class="clues-list"></div>
-        <div class="clues-footnote"><span class="footnote-symbol">i</span><span><strong>Atalho:</strong> use as setas para navegar e a tecla espaço para mudar a direção em um cruzamento.</span></div>
-      </aside>
-    </section>
-
-    <footer class="footer">
-      <div class="footer-brand"><span class="footer-mark">A</span><span>A<span class="brand-period">.</span>point</span></div>
-      <p>Feito para quem gosta de entender como as coisas funcionam.</p>
-      <span class="footer-tech">HTML <i>·</i> CSS <i>·</i> JAVASCRIPT</span>
-    </footer>
-  </main>
-
-  <dialog id="reset-dialog" class="reset-dialog">
-    <div class="dialog-stamp">↻</div>
-    <div class="micro-label">NOVA TENTATIVA</div>
-    <h2>Resetar o<br>circuito?</h2>
-    <p>Todas as letras e o tempo desta partida serão apagados.</p>
-    <div class="dialog-actions">
-      <button id="cancel-reset" class="reset-button" type="button">CONTINUAR JOGANDO</button>
-      <button id="confirm-reset" class="check-button" type="button"><span>REINICIAR</span><b>↗</b></button>
+      <p><span id="score" role="status">0 de 16 palavras corretas</span> <strong id="percent">0%</strong></p>
+      <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="16" aria-valuenow="0"><div id="progress"></div></div>
+      <p id="feedback" aria-live="polite"></p>
     </div>
-  </dialog>
+    <aside class="box">
+      <h3>PISTAS</h3>
+      <div class="tabs">
+        <button class="active" data-filter="all" type="button">TODAS</button>
+        <button data-filter="H" type="button">HORIZ.</button>
+        <button data-filter="V" type="button">VERT.</button>
+      </div>
+      <div id="clues"></div>
+      <small>Setas movem · Espaço troca direção</small>
+    </aside>
+  </div>
+</section>
 
-  <div id="celebration" aria-hidden="true"></div>
+<div id="win" class="overlay" hidden><div class="box"><h2 id="win-title">VITÓRIA!</h2><div id="win-art" class="row"></div><p id="win-text" class="msg"></p><button class="btn" id="close-win">OK</button></div></div>
+
+<dialog id="reset-dialog">
+  <h2>REINICIAR?</h2><p>Todas as letras e o tempo serão apagados.</p>
+  <button id="cancel-reset" class="btn" type="button">CONTINUAR</button>
+  <button id="confirm-reset" class="btn red" type="button">REINICIAR</button>
+</dialog>
 </body>
 </html>

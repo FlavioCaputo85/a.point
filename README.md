@@ -1,19 +1,19 @@
-# A.point — Conexões de Arquitetura
+# A.point (waypoint)
 
-Jogo interativo de revisão para a disciplina de Arquitetura Computacional. O objetivo é descobrir 16 conceitos a partir das pistas e completar o tabuleiro conectando as palavras.
+Jogo em **8 bits** de revisão para a disciplina de Arquitetura Computacional. Crie seu personagem, escolha sua faculdade e seu item, e batalhe completando a cruzadinha com 16 conceitos de arquitetura para conquistar o item.
 
-O projeto usa somente **HTML, CSS e JavaScript puros**. Não depende de bibliotecas, frameworks, fontes externas, instalação ou servidor: basta abrir `index.html` no navegador.
+O projeto usa somente **HTML, CSS e JavaScript puros**. Todos os sprites em pixel art 32x32 (personagens, itens e logos) são desenhados em pixels pelo código. Basta abrir `index.html` no navegador.
 
 ## Como jogar
 
-1. Escolha uma pista na lista ou clique em uma casa do tabuleiro.
-2. Digite as letras diretamente nas casas. As respostas são aceitas em maiúsculas e sem acentos.
-3. Em uma casa compartilhada por duas palavras, pressione **Espaço** ou clique duas vezes para alternar entre horizontal e vertical.
-4. Use as **setas** para navegar pelas casas. Pressione **Enter** para selecionar a próxima pista.
-5. Clique em **Conferir respostas** para ver quais palavras estão corretas, incompletas ou precisam de revisão. O contador e a barra mostram o total de acertos.
-6. Use **Reiniciar** para limpar a partida e começar novamente.
-
-O cronômetro começa na primeira letra inserida. O som é opcional e começa desligado. Também é possível colar uma resposta inteira a partir da primeira casa da palavra selecionada.
+1. Aperte **START** e escolha um personagem: Alex, Bruno, Luna, Maya ou o robô Bot-7.
+2. Escolha a faculdade. Apenas a **SPTECH** deixa você continuar.
+3. Escolha um item: energético, café ou livro de espanhol.
+4. Na batalha, escolha uma pista na lista ou clique em uma casa do tabuleiro e digite as letras direto nas casas.
+5. Em uma casa compartilhada por duas palavras, pressione **Espaço** ou clique duas vezes para alternar entre horizontal e vertical. As **setas** navegam e **Enter** vai para a próxima pista.
+6. Clique em **Conferir** para ver quais palavras estão certas ou erradas. O contador mostra, por exemplo, "8 de 16 palavras corretas".
+7. Você tem **3 vidas**: um Conferir que não traz nenhuma palavra certa nova custa 1 vida, e sem vidas é fim de jogo. Há também **3 dicas** que revelam uma letra.
+8. Use **Reiniciar** para limpar o tabuleiro. Acertando as 16 palavras, o item é seu!
 
 ## Palavras e pistas
 
@@ -38,12 +38,11 @@ O tabuleiro usa as 16 palavras do enunciado. Todas se cruzam com pelo menos uma 
 | 14 | Vertical | RAM | Guarda temporariamente programas em execução; seu conteúdo desaparece sem energia. |
 | 15 | Horizontal | FLASH | Tecnologia não volátil utilizada em pendrives, com apagamento realizado em blocos. |
 
-As pistas foram mantidas no projeto original. O enunciado recomenda conferir a terminologia com o e-book da disciplina; esse e-book não veio junto dos arquivos recebidos.
-
 ## Arquivos
 
-- `index.html` — estrutura da página e componentes do jogo.
-- `style.css` — identidade visual, cores, animações e layout responsivo.
-- `script.js` — tabuleiro, navegação, pistas, cronômetro, validação, pontuação, sons e celebração.
-- `README.md` — documentação e instruções de publicação.
+- `index.html` — telas do jogo (título, personagem, faculdade, item, batalha).
+- `style.css` — visual 8 bits e layout responsivo.
+- `script.js` — cruzadinha: tabuleiro, pistas, cronômetro, conferência, pontuação e sons.
+- `game.js` — fluxo das telas e sprites 8 bits.
+- `README.md` — documentação.
 

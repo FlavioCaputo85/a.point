@@ -450,7 +450,7 @@ function playTone(frequency = 420) {
     const gain = audioContext.createGain();
     oscillator.connect(gain);
     gain.connect(audioContext.destination);
-    oscillator.type = "triangle";
+    oscillator.type = "square";
     oscillator.frequency.value = frequency;
     gain.gain.setValueAtTime(0.035, audioContext.currentTime);
     gain.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.11);
@@ -463,7 +463,7 @@ function playTone(frequency = 420) {
 
 function celebrate() {
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-  const colors = ["#d9fa45", "#ff705d", "#3155e7", "#9ee7bd", "#fffdf7"];
+  const colors = ["#f9b233", "#e6005c", "#2bb3c9", "#1565c0", "#fffdf7"];
   for (let index = 0; index < 76; index += 1) {
     const piece = document.createElement("i");
     piece.className = "confetti";
