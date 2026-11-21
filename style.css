@@ -1,0 +1,678 @@
+:root {
+    color-scheme: dark;
+    --text: #f5f5fb;
+    --muted: #a6adc7;
+    --accent: #b4a4ff;
+    --mint: #85efd5;
+    --cell: 36px
+}
+
+* {
+    box-sizing: border-box
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: #0c1020;
+    color: var(--text);
+    font: 14px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    overflow-x: hidden
+}
+
+button,
+a,
+input {
+    -webkit-tap-highlight-color: transparent
+}
+
+button {
+    font: inherit;
+    cursor: pointer
+}
+
+button:focus-visible,
+a:focus-visible {
+    outline: 3px solid var(--mint);
+    outline-offset: 4px
+}
+
+.orb {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(85px);
+    opacity: .25;
+    pointer-events: none;
+    z-index: -1;
+    animation: drift 18s ease-in-out infinite alternate
+}
+
+.orb-one {
+    width: 550px;
+    height: 550px;
+    background: #7853e9;
+    top: -240px;
+    left: -90px
+}
+
+.orb-two {
+    width: 500px;
+    height: 500px;
+    background: #087b96;
+    right: -200px;
+    top: 220px;
+    animation-delay: -7s
+}
+
+.orb-three {
+    width: 400px;
+    height: 400px;
+    background: #512b9b;
+    bottom: -270px;
+    left: 30%
+}
+
+main {
+    max-width: 1320px;
+    margin: auto;
+    padding: 30px 40px
+}
+
+header {
+    display: flex;
+    align-items: center;
+    gap: 24px
+}
+
+.brand {
+    text-decoration: none;
+    color: white;
+    font-size: 26px;
+    font-weight: 750;
+    letter-spacing: -1px;
+    display: flex;
+    align-items: center;
+    gap: 10px
+}
+
+.brand-icon {
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    background: linear-gradient(135deg, #cbbcff55, #ffffff0c);
+    border: 1px solid #ffffff30;
+    border-radius: 13px
+}
+
+.brand-dot {
+    color: var(--accent)
+}
+
+.tag,
+.small {
+    font-size: 10px;
+    letter-spacing: 1.8px;
+    color: var(--muted)
+}
+
+.quiet {
+    margin-left: auto;
+    color: var(--muted);
+    border: 1px solid #ffffff20;
+    border-radius: 24px;
+    padding: 9px 14px;
+    background: #ffffff06
+}
+
+.intro {
+    padding: 55px 0 35px
+}
+
+.eyebrow {
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    color: var(--mint);
+    margin-bottom: 17px
+}
+
+h1 {
+    font-size: clamp(36px, 4.4vw, 60px);
+    line-height: 1.08;
+    letter-spacing: -2.8px;
+    margin: 0 0 18px;
+    font-weight: 650
+}
+
+h1 span {
+    background: linear-gradient(100deg, #bfacff, #91dce5);
+    background-clip: text;
+    -webkit-text-fill-color: transparent
+}
+
+.intro p {
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.8;
+    margin: 0
+}
+
+.workspace {
+    display: grid;
+    grid-template-columns: minmax(0, 1.65fr) minmax(300px, 1fr);
+    gap: 22px;
+    align-items: start
+}
+
+.glass {
+    background: linear-gradient(135deg, #ffffff0f, #ffffff04);
+    border: 1px solid #ffffff21;
+    box-shadow: inset 0 1px 0 #ffffff18, 0 24px 75px #00000025;
+    border-radius: 28px;
+    backdrop-filter: blur(30px) saturate(140%);
+    -webkit-backdrop-filter: blur(30px) saturate(140%)
+}
+
+.board-panel {
+    padding: 25px
+}
+
+.panel-top {
+    display: flex;
+    justify-content: space-between;
+    color: var(--muted);
+    font-size: 10px;
+    letter-spacing: 1.7px;
+    margin-bottom: 22px
+}
+
+#timer {
+    font-variant-numeric: tabular-nums
+}
+
+.live-dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: var(--mint);
+    border-radius: 50%;
+    margin-right: 7px;
+    box-shadow: 0 0 12px #85efd577
+}
+
+.board-scroll {
+    overflow: auto;
+    padding: 4px 0 12px
+}
+
+#board {
+    display: grid;
+    gap: 3px;
+    width: max-content;
+    margin: auto
+}
+
+.cell {
+    width: var(--cell);
+    height: var(--cell);
+    position: relative;
+    border-radius: 7px;
+    background: #ffffff0c;
+    border: 1px solid #ffffff1e;
+    transition: background .2s, border-color .2s, transform .2s
+}
+
+.cell input {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    outline: 0;
+    background: none;
+    text-align: center;
+    color: #f6f6ff;
+    font: 600 17px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    text-transform: uppercase;
+    padding: 7px 0 0;
+    border-radius: 6px;
+    caret-color: var(--mint)
+}
+
+.cell .number {
+    position: absolute;
+    top: 2px;
+    left: 4px;
+    font-size: 8px;
+    color: #aab2d0;
+    pointer-events: none
+}
+
+.cell.selected {
+    background: #b4a4ff25;
+    border-color: #b4a4ff55
+}
+
+.cell.focused {
+    background: #b4a4ff45;
+    border-color: #d2c5ff;
+    box-shadow: 0 0 0 2px #b4a4ff25;
+    transform: scale(1.05);
+    z-index: 1
+}
+
+.cell.correct {
+    background: #67e9bc20;
+    border-color: #67e9bc80
+}
+
+.cell.incorrect {
+    background: #ff839b1c;
+    border-color: #ff839b88
+}
+
+.cell.edited {
+    animation: pop .18s ease
+}
+
+.board-hint {
+    text-align: center;
+    font-size: 10px;
+    color: var(--muted);
+    margin: 10px 0 20px
+}
+
+.current-clue {
+    min-height: 72px;
+    padding: 14px 16px;
+    background: #ffffff07;
+    border: 1px solid #ffffff12;
+    border-radius: 15px;
+    line-height: 1.6;
+    color: #e2def4
+}
+
+.current-clue small {
+    display: block;
+    color: var(--accent);
+    font-size: 9px;
+    letter-spacing: 1.3px;
+    margin-bottom: 4px
+}
+
+.controls {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px
+}
+
+.primary,
+.secondary {
+    padding: 13px 19px;
+    border-radius: 13px;
+    font-weight: 600;
+    border: 1px solid #ffffff20;
+    transition: transform .25s, filter .25s
+}
+
+.primary {
+    background: linear-gradient(130deg, #d0c3ff, #a1b8f9);
+    color: #1b1938;
+    box-shadow: inset 0 1px 0 #ffffff77, 0 5px 22px #a197ff15
+}
+
+.primary span {
+    margin-left: 20px
+}
+
+.secondary {
+    background: #ffffff08;
+    color: #e3e2ef
+}
+
+.primary:hover,
+.secondary:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1)
+}
+
+.progress-top {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: var(--muted);
+    margin: 24px 0 10px
+}
+
+.progress-track {
+    height: 5px;
+    border-radius: 10px;
+    background: #ffffff0c;
+    overflow: hidden
+}
+
+#progress {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, var(--accent), var(--mint));
+    border-radius: 10px;
+    transition: width .7s cubic-bezier(.2, .8, .2, 1)
+}
+
+#feedback {
+    color: var(--muted);
+    font-size: 11px;
+    margin: 12px 0 0;
+    line-height: 1.6
+}
+
+.clues-panel {
+    padding: 26px 22px
+}
+
+.clues-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px
+}
+
+h2 {
+    font-size: 21px;
+    letter-spacing: -.6px;
+    margin: 0
+}
+
+h2 span {
+    color: var(--mint)
+}
+
+.small {
+    font-size: 8px;
+    white-space: nowrap
+}
+
+.tabs {
+    display: flex;
+    background: #00000020;
+    padding: 4px;
+    border: 1px solid #ffffff09;
+    border-radius: 12px;
+    margin: 22px 0
+}
+
+.tabs button {
+    flex: 1;
+    background: none;
+    border: 0;
+    color: var(--muted);
+    font-size: 11px;
+    padding: 10px 7px;
+    border-radius: 9px
+}
+
+.tabs button.active {
+    background: #ffffff12;
+    color: white;
+    box-shadow: 0 2px 6px #0002
+}
+
+.clue-section h3 {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 1.8px;
+    color: var(--muted);
+    margin: 20px 0 12px
+}
+
+.clue-list {
+    display: grid;
+    gap: 6px
+}
+
+.clue {
+    display: flex;
+    gap: 12px;
+    text-align: left;
+    width: 100%;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 13px;
+    padding: 11px 10px;
+    color: #c4c9dd;
+    line-height: 1.6;
+    font-size: 12px;
+    transition: background .2s, border-color .2s
+}
+
+.clue:hover {
+    background: #ffffff06
+}
+
+.clue.active {
+    background: #b4a4ff10;
+    border-color: #b4a4ff25;
+    color: #f0edff
+}
+
+.clue-num {
+    flex-shrink: 0;
+    width: 25px;
+    height: 25px;
+    display: grid;
+    place-items: center;
+    background: #ffffff09;
+    border: 1px solid #ffffff10;
+    border-radius: 8px;
+    font-size: 10px;
+    color: var(--accent)
+}
+
+.clue em {
+    font-style: normal;
+    display: block;
+    color: #7f89a7;
+    font-size: 9px;
+    letter-spacing: .4px;
+    margin-top: 3px
+}
+
+.clue.good em {
+    color: var(--mint)
+}
+
+.clue.bad em {
+    color: #ff9fb1
+}
+
+footer {
+    padding: 25px 4px;
+    color: #7d85a1;
+    font-size: 10px;
+    display: flex;
+    justify-content: space-between;
+    line-height: 1.8
+}
+
+footer span {
+    font-size: 8px;
+    letter-spacing: 1.3px
+}
+
+dialog {
+    max-width: 440px;
+    width: calc(100% - 32px);
+    padding: 28px;
+    color: white;
+    background: #1b2038;
+    border: 1px solid #ffffff30;
+    border-radius: 25px;
+    box-shadow: 0 30px 100px #0008
+}
+
+dialog p {
+    line-height: 1.7;
+    color: var(--muted)
+}
+
+dialog::backdrop {
+    background: #050816aa;
+    backdrop-filter: blur(9px)
+}
+
+#celebration {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 100
+}
+
+.confetti {
+    position: absolute;
+    top: -20px;
+    width: 7px;
+    height: 12px;
+    animation: fall 3s ease-in forwards
+}
+
+@keyframes drift {
+    to {
+        transform: translate(70px, 60px) scale(1.12)
+    }
+}
+
+@keyframes pop {
+    50% {
+        transform: scale(1.12)
+    }
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(650deg);
+        opacity: 0
+    }
+}
+
+@media(min-width:1000px) {
+    #clues {
+        max-height: 720px;
+        overflow: auto;
+        scrollbar-width: thin;
+        scrollbar-color: #ffffff22 transparent
+    }
+}
+
+@media(max-width:1100px) {
+    :root {
+        --cell: 30px
+    }
+
+    .board-panel {
+        padding: 20px
+    }
+
+    .workspace {
+        grid-template-columns: minmax(0, 1.5fr) minmax(280px, 1fr)
+    }
+
+    main {
+        padding: 25px
+    }
+}
+
+@media(max-width:900px) {
+    .workspace {
+        grid-template-columns: 1fr
+    }
+
+    :root {
+        --cell: 36px
+    }
+
+    .clues-panel {
+        padding: 24px
+    }
+
+    .intro {
+        padding-top: 40px
+    }
+
+    .tag {
+        display: none
+    }
+
+    #clues {
+        display: block
+    }
+}
+
+@media(max-width:620px) {
+    main {
+        padding: 18px 12px
+    }
+
+    .intro {
+        padding: 35px 8px 28px
+    }
+
+    h1 {
+        letter-spacing: -1.7px
+    }
+
+    .intro p {
+        font-size: 13px
+    }
+
+    .board-panel {
+        padding: 18px 10px;
+        border-radius: 22px
+    }
+
+    :root {
+        --cell: 28px
+    }
+
+    .board-scroll {
+        margin: 0 2px
+    }
+
+    .board-hint {
+        font-size: 9px
+    }
+
+    .cell input {
+        font-size: 15px
+    }
+
+    .cell {
+        border-radius: 5px
+    }
+
+    .current-clue {
+        font-size: 12px
+    }
+
+    footer {
+        display: block
+    }
+
+    footer span {
+        display: block;
+        margin-top: 5px
+    }
+
+    .clues-heading .small {
+        font-size: 7px
+    }
+}
+
+@media(prefers-reduced-motion:reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important
+    }
+}

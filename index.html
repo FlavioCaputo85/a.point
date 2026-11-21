@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#111426">
+    <title>Arqui — Cruzadinha Computacional</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <div class="orb orb-one" aria-hidden="true"></div>
+    <div class="orb orb-two" aria-hidden="true"></div>
+    <div class="orb orb-three" aria-hidden="true"></div>
+    <main>
+        <header><a class="brand" href="./" aria-label="Arqui, início"><span class="brand-icon">a.</span> arqui<span
+                    class="brand-dot">/</span></a><span class="tag">ARQUITETURA COMPUTACIONAL</span><button id="sound"
+                class="quiet" aria-pressed="false">Som: desligado</button></header>
+        <section class="intro">
+            <div class="eyebrow">CONECTE IDEIAS. COMPLETE O CIRCUITO.</div>
+            <h1>Pequenas letras.<br><span>Grandes conexões.</span></h1>
+            <p>Uma pausa para desafiar o que você sabe sobre computadores.<br>16 conceitos. Um circuito para completar.
+            </p>
+        </section>
+        <section class="workspace" aria-label="Jogo de cruzadinha">
+            <div class="glass board-panel">
+                <div class="panel-top"><span><i class="live-dot"></i> SEU CIRCUITO</span><span id="timer"
+                        aria-label="Tempo de jogo">00:00</span></div>
+                <div class="board-scroll">
+                    <div id="board" aria-label="Tabuleiro da cruzadinha"></div>
+                </div>
+                <div class="board-hint">Clique em uma casa · Setas para navegar · Espaço troca a direção</div>
+                <div class="current-clue" id="current-clue"></div>
+                <div class="controls"><button class="primary" id="check">Conferir circuito
+                        <span>↗</span></button><button class="secondary" id="reset">Reiniciar</button></div>
+                <div class="progress-top"><span id="score" role="status" aria-live="polite">0 de 16 palavras</span><span
+                        id="percent">0%</span></div>
+                <div class="progress-track" role="progressbar" aria-label="Palavras corretas" aria-valuemin="0"
+                    aria-valuemax="16" aria-valuenow="0">
+                    <div id="progress"></div>
+                </div>
+                <p id="feedback" aria-live="polite">Seu próximo insight começa com uma letra.</p>
+            </div>
+            <aside class="glass clues-panel">
+                <div class="clues-heading">
+                    <h2>Siga as pistas<span>.</span></h2><span class="small">16 CONEXÕES</span>
+                </div>
+                <div class="tabs" role="group" aria-label="Filtrar pistas"><button class="active" data-filter="all"
+                        aria-pressed="true">Todas</button><button data-filter="H"
+                        aria-pressed="false">Horizontais</button><button data-filter="V"
+                        aria-pressed="false">Verticais</button></div>
+                <div id="clues"></div>
+            </aside>
+        </section>
+        <footer>Feito de curiosidade, lógica e boas conexões.<span>HTML + CSS + JAVASCRIPT</span></footer>
+    </main>
+    <dialog id="reset-dialog">
+        <h2>Começar de novo?</h2>
+        <p>As letras e o tempo desta partida serão apagados.</p>
+        <div class="controls"><button id="cancel-reset" class="secondary">Continuar jogando</button><button
+                id="confirm-reset" class="primary">Reiniciar</button></div>
+    </dialog>
+    <div id="celebration" aria-hidden="true"></div>
+</body>
+
+</html>
