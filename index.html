@@ -1,86 +1,108 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>A.point (waypoint)</title>
-<link rel="stylesheet" href="style.css">
-<script src="script.js" defer></script>
-<script src="game.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A.point (waypoint)</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+  <script src="game.js" defer></script>
 </head>
+
 <body>
-<div id="celebration" aria-hidden="true"></div>
+  <div id="celebration" aria-hidden="true"></div>
 
-<section id="s-title" class="screen on">
-  <h1 class="logo">A.point</h1><p class="sub">(waypoint)</p>
-  <div id="deco" class="row"></div>
-  <button class="btn blink" id="start">▶ APERTE START</button>
-</section>
+  <section id="s-title" class="screen on">
+    <h1 class="logo">A.point</h1>
+    <p class="sub">(waypoint)</p>
+    <div id="deco" class="row"></div>
+    <button class="btn blink" id="start">▶ APERTE START</button>
+  </section>
 
-<section id="s-char" class="screen">
-  <h2>ESCOLHA SEU PERSONAGEM</h2>
-  <div id="chars" class="cards"></div>
-</section>
+  <section id="s-char" class="screen">
+    <h2>ESCOLHA SEU PERSONAGEM</h2>
+    <div id="chars" class="cards"></div>
+  </section>
 
-<section id="s-school" class="screen">
-  <h2>ONDE VOCÊ ESTUDA?</h2>
-  <div class="cards">
-    <button class="card" id="fiap"><span id="logo-fiap"></span>FIAP</button>
-    <button class="card" id="sptech"><span id="logo-sptech"></span>SPTECH</button>
-  </div>
-  <p id="nope" class="msg red" hidden>PARECE QUE VOCÊ NÃO É DIGNO DE JOGAR O JOGO!</p>
-</section>
-
-<section id="s-item" class="screen">
-  <h2>ESCOLHA SEU ITEM</h2>
-  <div id="items" class="cards"></div>
-</section>
-
-<section id="s-intro" class="screen">
-  <div class="box"><div id="intro-art" class="row"></div>
-  <p class="msg">VOCÊ ESCOLHEU UM ITEM MUITO REQUISITADO!<br>AGORA É A HORA DE BATALHAR PARA CONSEGUIR ESSE ITEM!</p></div>
-  <button class="btn" id="go">⚔ BATALHAR!</button>
-</section>
-
-<section id="s-game" class="screen">
-  <header class="hud box"><span id="hud-art" class="row"></span><span id="hud-text"></span>
-    <span class="grow"></span>
-    <span id="hearts" class="row"></span>
-    <span>TEMPO <strong id="timer">00:00</strong></span>
-    <button id="sound" class="btn small" type="button" aria-pressed="false"><span id="sound-state">SOM OFF</span></button>
-  </header>
-  <div class="workspace">
-    <div class="box">
-      <div class="board-scroll"><div id="board" aria-label="Tabuleiro da cruzadinha"></div></div>
-      <div class="box clue-now"><b>PISTA <span id="active-clue-number">01</span></b> <small id="active-clue-meta"></small><p id="current-clue"></p></div>
-      <div class="actions">
-        <button class="btn" id="check" type="button">CONFERIR</button>
-        <button class="btn" id="hint" type="button">DICA (3)</button>
-        <button class="btn red" id="reset" type="button">REINICIAR</button>
-      </div>
-      <p><span id="score" role="status">0 de 16 palavras corretas</span> <strong id="percent">0%</strong></p>
-      <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="16" aria-valuenow="0"><div id="progress"></div></div>
-      <p id="feedback" aria-live="polite"></p>
+  <section id="s-school" class="screen">
+    <h2>ONDE VOCÊ ESTUDA?</h2>
+    <div class="cards">
+      <button class="card" id="fiap"><span id="logo-fiap"></span>FIAP</button>
+      <button class="card" id="sptech"><span id="logo-sptech"></span>SPTECH</button>
     </div>
-    <aside class="box">
-      <h3>PISTAS</h3>
-      <div class="tabs">
-        <button class="active" data-filter="all" type="button">TODAS</button>
-        <button data-filter="H" type="button">HORIZ.</button>
-        <button data-filter="V" type="button">VERT.</button>
+    <p id="nope" class="msg red" hidden>PARECE QUE VOCÊ NÃO É DIGNO DE JOGAR O JOGO!</p>
+  </section>
+
+  <section id="s-item" class="screen">
+    <h2>ESCOLHA SEU ITEM</h2>
+    <div id="items" class="cards"></div>
+  </section>
+
+  <section id="s-intro" class="screen">
+    <div class="box">
+      <div id="intro-art" class="row"></div>
+      <p class="msg">VOCÊ ESCOLHEU UM ITEM MUITO REQUISITADO!<br>AGORA É A HORA DE BATALHAR PARA CONSEGUIR ESSE ITEM!
+      </p>
+    </div>
+    <button class="btn" id="go">⚔ BATALHAR!</button>
+  </section>
+
+  <section id="s-game" class="screen">
+    <header class="hud box"><span id="hud-art" class="row"></span><span id="hud-text"></span>
+      <span class="grow"></span>
+      <span id="hearts" class="row"></span>
+      <span>TEMPO <strong id="timer">00:00</strong></span>
+      <button id="sound" class="btn small" type="button" aria-pressed="false"><span id="sound-state">SOM
+          OFF</span></button>
+    </header>
+    <div class="workspace">
+      <div class="box">
+        <div class="board-scroll">
+          <div id="board" aria-label="Tabuleiro da cruzadinha"></div>
+        </div>
+        <div class="box clue-now"><b>PISTA <span id="active-clue-number">01</span></b> <small
+            id="active-clue-meta"></small>
+          <p id="current-clue"></p>
+        </div>
+        <div class="actions">
+          <button class="btn" id="check" type="button">CONFERIR</button>
+          <button class="btn" id="hint" type="button">DICA (3)</button>
+          <button class="btn red" id="reset" type="button">REINICIAR</button>
+        </div>
+        <p><span id="score" role="status">0 de 16 palavras corretas</span> <strong id="percent">0%</strong></p>
+        <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="16" aria-valuenow="0">
+          <div id="progress"></div>
+        </div>
+        <p id="feedback" aria-live="polite"></p>
       </div>
-      <div id="clues"></div>
-      <small>Setas movem · Espaço troca direção</small>
-    </aside>
+      <aside class="box">
+        <h3>PISTAS</h3>
+        <div class="tabs">
+          <button class="active" data-filter="all" type="button">TODAS</button>
+          <button data-filter="H" type="button">HORIZ.</button>
+          <button data-filter="V" type="button">VERT.</button>
+        </div>
+        <div id="clues"></div>
+        <small>Setas movem · Espaço troca direção</small>
+      </aside>
+    </div>
+  </section>
+
+  <div id="win" class="overlay" hidden>
+    <div class="box">
+      <h2 id="win-title">VITÓRIA!</h2>
+      <div id="win-art" class="row"></div>
+      <p id="win-text" class="msg"></p><button class="btn" id="close-win">OK</button>
+    </div>
   </div>
-</section>
 
-<div id="win" class="overlay" hidden><div class="box"><h2 id="win-title">VITÓRIA!</h2><div id="win-art" class="row"></div><p id="win-text" class="msg"></p><button class="btn" id="close-win">OK</button></div></div>
-
-<dialog id="reset-dialog">
-  <h2>REINICIAR?</h2><p>Todas as letras e o tempo serão apagados.</p>
-  <button id="cancel-reset" class="btn" type="button">CONTINUAR</button>
-  <button id="confirm-reset" class="btn red" type="button">REINICIAR</button>
-</dialog>
+  <dialog id="reset-dialog">
+    <h2>REINICIAR?</h2>
+    <p>Todas as letras e o tempo serão apagados.</p>
+    <button id="cancel-reset" class="btn" type="button">CONTINUAR</button>
+    <button id="confirm-reset" class="btn red" type="button">REINICIAR</button>
+  </dialog>
 </body>
+
 </html>

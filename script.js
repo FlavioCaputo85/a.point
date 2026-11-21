@@ -2,22 +2,150 @@
 
 // As 16 respostas do enunciado. As coordenadas mantêm todas as palavras conectadas.
 const entries = [
-  { answer: "MEMORIADEMASSA", row: 0, col: 2, dir: "H", clue: "Conserva grandes volumes de arquivos e programas mesmo quando o computador está desligado.", number: 1, id: 0 },
-  { answer: "DUALCORE", row: 0, col: 9, dir: "V", clue: "Processador com dois núcleos físicos de execução.", number: 2, id: 1 },
-  { answer: "CACHE", row: 2, col: 0, dir: "H", clue: "Mantém cópias de informações frequentemente acessadas para reduzir o tempo de espera do processador.", number: 3, id: 2 },
-  { answer: "EEPROM", row: 2, col: 4, dir: "V", clue: "Tecnologia não volátil que permite apagar e regravar eletricamente bytes individuais.", number: 4, id: 3 },
-  { answer: "DATABUS", row: 2, col: 6, dir: "H", clue: "Conjunto de linhas que transporta valores entre os componentes do computador.", number: 5, id: 4 },
-  { answer: "QUADCORE", row: 3, col: 13, dir: "V", clue: "Processador com quatro núcleos físicos de execução.", number: 6, id: 5 },
-  { answer: "ADDRESSBUS", row: 3, col: 15, dir: "V", clue: "Conjunto de linhas que indica a posição a ser acessada na memória.", number: 7, id: 6 },
-  { answer: "CPU", row: 4, col: 3, dir: "H", clue: "Executa instruções dos programas e coordena o processamento geral do computador.", number: 8, id: 7 },
-  { answer: "DMA", row: 5, col: 0, dir: "V", clue: "Permite transferências entre periféricos e memória sem intervenção contínua do processador.", number: 9, id: 8 },
-  { answer: "UC", row: 5, col: 2, dir: "V", clue: "Decodifica instruções e emite sinais que coordenam sua execução.", number: 10, id: 9 },
-  { answer: "ULA", row: 5, col: 11, dir: "V", clue: "Circuito do processador responsável por cálculos e comparações lógicas.", number: 11, id: 10 },
-  { answer: "MICROCONTROLADOR", row: 6, col: 0, dir: "H", clue: "Chip que integra processador, memória e periféricos para aplicações embarcadas.", number: 12, id: 11 },
-  { answer: "REGISTRADORES", row: 9, col: 3, dir: "H", clue: "Pequenos espaços internos do processador que guardam operandos e resultados imediatos.", number: 13, id: 12 },
-  { answer: "ROM", row: 9, col: 3, dir: "V", clue: "Armazena instruções permanentes, sendo tradicionalmente destinada apenas à leitura.", number: 13, id: 13 },
-  { answer: "RAM", row: 9, col: 9, dir: "V", clue: "Guarda temporariamente programas em execução; seu conteúdo desaparece sem energia.", number: 14, id: 14 },
-  { answer: "FLASH", row: 12, col: 12, dir: "H", clue: "Tecnologia não volátil utilizada em pendrives, com apagamento realizado em blocos.", number: 15, id: 15 }
+  {
+    answer: "MEMORIADEMASSA",
+    row: 0,
+    col: 2,
+    dir: "H",
+    clue: "Conserva grandes volumes de arquivos e programas mesmo quando o computador está desligado.",
+    number: 1,
+    id: 0,
+  },
+  {
+    answer: "DUALCORE",
+    row: 0,
+    col: 9,
+    dir: "V",
+    clue: "Processador com dois núcleos físicos de execução.",
+    number: 2,
+    id: 1,
+  },
+  {
+    answer: "CACHE",
+    row: 2,
+    col: 0,
+    dir: "H",
+    clue: "Mantém cópias de informações frequentemente acessadas para reduzir o tempo de espera do processador.",
+    number: 3,
+    id: 2,
+  },
+  {
+    answer: "EEPROM",
+    row: 2,
+    col: 4,
+    dir: "V",
+    clue: "Tecnologia não volátil que permite apagar e regravar eletricamente bytes individuais.",
+    number: 4,
+    id: 3,
+  },
+  {
+    answer: "DATABUS",
+    row: 2,
+    col: 6,
+    dir: "H",
+    clue: "Conjunto de linhas que transporta valores entre os componentes do computador.",
+    number: 5,
+    id: 4,
+  },
+  {
+    answer: "QUADCORE",
+    row: 3,
+    col: 13,
+    dir: "V",
+    clue: "Processador com quatro núcleos físicos de execução.",
+    number: 6,
+    id: 5,
+  },
+  {
+    answer: "ADDRESSBUS",
+    row: 3,
+    col: 15,
+    dir: "V",
+    clue: "Conjunto de linhas que indica a posição a ser acessada na memória.",
+    number: 7,
+    id: 6,
+  },
+  {
+    answer: "CPU",
+    row: 4,
+    col: 3,
+    dir: "H",
+    clue: "Executa instruções dos programas e coordena o processamento geral do computador.",
+    number: 8,
+    id: 7,
+  },
+  {
+    answer: "DMA",
+    row: 5,
+    col: 0,
+    dir: "V",
+    clue: "Permite transferências entre periféricos e memória sem intervenção contínua do processador.",
+    number: 9,
+    id: 8,
+  },
+  {
+    answer: "UC",
+    row: 5,
+    col: 2,
+    dir: "V",
+    clue: "Decodifica instruções e emite sinais que coordenam sua execução.",
+    number: 10,
+    id: 9,
+  },
+  {
+    answer: "ULA",
+    row: 5,
+    col: 11,
+    dir: "V",
+    clue: "Circuito do processador responsável por cálculos e comparações lógicas.",
+    number: 11,
+    id: 10,
+  },
+  {
+    answer: "MICROCONTROLADOR",
+    row: 6,
+    col: 0,
+    dir: "H",
+    clue: "Chip que integra processador, memória e periféricos para aplicações embarcadas.",
+    number: 12,
+    id: 11,
+  },
+  {
+    answer: "REGISTRADORES",
+    row: 9,
+    col: 3,
+    dir: "H",
+    clue: "Pequenos espaços internos do processador que guardam operandos e resultados imediatos.",
+    number: 13,
+    id: 12,
+  },
+  {
+    answer: "ROM",
+    row: 9,
+    col: 3,
+    dir: "V",
+    clue: "Armazena instruções permanentes, sendo tradicionalmente destinada apenas à leitura.",
+    number: 13,
+    id: 13,
+  },
+  {
+    answer: "RAM",
+    row: 9,
+    col: 9,
+    dir: "V",
+    clue: "Guarda temporariamente programas em execução; seu conteúdo desaparece sem energia.",
+    number: 14,
+    id: 14,
+  },
+  {
+    answer: "FLASH",
+    row: 12,
+    col: 12,
+    dir: "H",
+    clue: "Tecnologia não volátil utilizada em pendrives, com apagamento realizado em blocos.",
+    number: 15,
+    id: 15,
+  },
 ];
 
 const ROWS = 13;
@@ -40,14 +168,18 @@ let timerInterval = null;
 const cellKey = (row, col) => `${row},${col}`;
 
 function normalize(value) {
-  return value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase().replace(/[^A-Z]/g, "");
+  return value
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toUpperCase()
+    .replace(/[^A-Z]/g, "");
 }
 
 function positions(entry) {
   return Array.from(entry.answer, (letter, index) => ({
     row: entry.row + (entry.dir === "V" ? index : 0),
     col: entry.col + (entry.dir === "H" ? index : 0),
-    letter
+    letter,
   }));
 }
 
@@ -66,8 +198,12 @@ function buildCellMap() {
 
   // Evita que uma palavra fique isolada, sem cruzar com outra.
   for (const entry of entries) {
-    const crosses = positions(entry).some((position) => cells.get(cellKey(position.row, position.col)).entries.length > 1);
-    if (!crosses) throw new Error(`A palavra ${entry.answer} não cruza com outra palavra.`);
+    const crosses = positions(entry).some(
+      (position) =>
+        cells.get(cellKey(position.row, position.col)).entries.length > 1,
+    );
+    if (!crosses)
+      throw new Error(`A palavra ${entry.answer} não cruza com outra palavra.`);
   }
 }
 
@@ -89,7 +225,9 @@ function buildBoard() {
       box.className = "cell";
       if (cell.entries.length > 1) box.classList.add("crossing");
 
-      const beginning = entries.find((entry) => entry.row === row && entry.col === col);
+      const beginning = entries.find(
+        (entry) => entry.row === row && entry.col === col,
+      );
       if (beginning) {
         const number = document.createElement("span");
         number.className = "number";
@@ -116,7 +254,9 @@ function buildBoard() {
       input.addEventListener("focus", () => {
         focused = cell;
         if (!cell.entries.includes(active)) {
-          active = cell.entries.find((entry) => entry.dir === active.dir) || cell.entries[0];
+          active =
+            cell.entries.find((entry) => entry.dir === active.dir) ||
+            cell.entries[0];
         }
         highlight();
       });
@@ -192,7 +332,10 @@ function buildClues() {
 function selectEntry(entry) {
   active = entry;
   const wordPositions = positions(entry);
-  const next = wordPositions.find((position) => !cells.get(cellKey(position.row, position.col)).input.value) || wordPositions[0];
+  const next =
+    wordPositions.find(
+      (position) => !cells.get(cellKey(position.row, position.col)).input.value,
+    ) || wordPositions[0];
   cells.get(cellKey(next.row, next.col)).input.focus();
   highlight();
 }
@@ -211,14 +354,17 @@ function highlight() {
   }
 
   $("#active-clue-number").textContent = String(active.number).padStart(2, "0");
-  $("#active-clue-meta").textContent = `${active.dir === "H" ? "HORIZONTAL →" : "VERTICAL ↓"} · ${active.answer.length} LETRAS`;
+  $("#active-clue-meta").textContent =
+    `${active.dir === "H" ? "HORIZONTAL →" : "VERTICAL ↓"} · ${active.answer.length} LETRAS`;
   $("#current-clue").textContent = active.clue;
 }
 
 function moveInActiveWord(delta) {
   if (!focused) return;
   const wordPositions = positions(active);
-  const index = wordPositions.findIndex((position) => position.row === focused.row && position.col === focused.col);
+  const index = wordPositions.findIndex(
+    (position) => position.row === focused.row && position.col === focused.col,
+  );
   const next = wordPositions[index + delta];
   if (next) cells.get(cellKey(next.row, next.col)).input.focus();
 }
@@ -268,15 +414,19 @@ function handleCellKey(event, cell) {
     ArrowLeft: { row: 0, col: -1, dir: "H" },
     ArrowRight: { row: 0, col: 1, dir: "H" },
     ArrowUp: { row: -1, col: 0, dir: "V" },
-    ArrowDown: { row: 1, col: 0, dir: "V" }
+    ArrowDown: { row: 1, col: 0, dir: "V" },
   };
   const direction = arrows[event.key];
   if (!direction) return;
 
   event.preventDefault();
-  const matchingEntry = cell.entries.find((entry) => entry.dir === direction.dir);
+  const matchingEntry = cell.entries.find(
+    (entry) => entry.dir === direction.dir,
+  );
   if (matchingEntry) active = matchingEntry;
-  const nextCell = cells.get(cellKey(cell.row + direction.row, cell.col + direction.col));
+  const nextCell = cells.get(
+    cellKey(cell.row + direction.row, cell.col + direction.col),
+  );
   if (nextCell && nextCell.entries.includes(active)) nextCell.input.focus();
   else highlight();
 }
@@ -287,7 +437,9 @@ function handlePaste(event, cell) {
   if (!pasted) return;
 
   const wordPositions = positions(active);
-  let index = wordPositions.findIndex((position) => position.row === cell.row && position.col === cell.col);
+  let index = wordPositions.findIndex(
+    (position) => position.row === cell.row && position.col === cell.col,
+  );
   if (index < 0) return;
 
   for (const letter of pasted) {
@@ -330,7 +482,8 @@ function renderTime() {
 
 function setScore(correctCount) {
   const percent = Math.round((correctCount / entries.length) * 100);
-  $("#score").textContent = `${correctCount} de ${entries.length} palavras corretas`;
+  $("#score").textContent =
+    `${correctCount} de ${entries.length} palavras corretas`;
   $("#percent").textContent = `${percent}%`;
   $("#progress").style.width = `${percent}%`;
   $(".progress-track").setAttribute("aria-valuenow", String(correctCount));
@@ -339,14 +492,16 @@ function setScore(correctCount) {
 function invalidateResults() {
   if (checked) {
     checked = false;
-    for (const cell of cells.values()) cell.box.classList.remove("correct", "incorrect");
+    for (const cell of cells.values())
+      cell.box.classList.remove("correct", "incorrect");
     for (const entry of entries) {
       const button = clueButtons.get(entry.id);
       button.classList.remove("good", "bad");
       button.querySelector("em").textContent = `${entry.answer.length} LETRAS`;
     }
     setScore(0);
-    $("#feedback").textContent = "Você alterou o circuito. Confira novamente para atualizar os acertos.";
+    $("#feedback").textContent =
+      "Você alterou o circuito. Confira novamente para atualizar os acertos.";
   }
 
   if (finished) {
@@ -362,10 +517,19 @@ function checkAnswers() {
 
   for (const entry of entries) {
     const wordPositions = positions(entry);
-    const value = wordPositions.map((position) => cells.get(cellKey(position.row, position.col)).input.value).join("");
+    const value = wordPositions
+      .map(
+        (position) =>
+          cells.get(cellKey(position.row, position.col)).input.value,
+      )
+      .join("");
     const isCorrect = value === entry.answer;
-    const isBlank = wordPositions.every((position) => !cells.get(cellKey(position.row, position.col)).input.value);
-    const isIncomplete = wordPositions.some((position) => !cells.get(cellKey(position.row, position.col)).input.value);
+    const isBlank = wordPositions.every(
+      (position) => !cells.get(cellKey(position.row, position.col)).input.value,
+    );
+    const isIncomplete = wordPositions.some(
+      (position) => !cells.get(cellKey(position.row, position.col)).input.value,
+    );
 
     results.set(entry.id, isCorrect);
     if (isCorrect) correctCount += 1;
@@ -374,13 +538,24 @@ function checkAnswers() {
     button.classList.toggle("good", isCorrect);
     button.classList.toggle("bad", !isCorrect);
     const status = button.querySelector("em");
-    status.textContent = isCorrect ? "CORRETA ✓" : isBlank ? "AINDA NÃO PREENCHIDA" : isIncomplete ? "INCOMPLETA · CONTINUE" : "REVISAR RESPOSTA";
+    status.textContent = isCorrect
+      ? "CORRETA ✓"
+      : isBlank
+        ? "AINDA NÃO PREENCHIDA"
+        : isIncomplete
+          ? "INCOMPLETA · CONTINUE"
+          : "REVISAR RESPOSTA";
   }
 
   for (const cell of cells.values()) {
-    const belongsToCorrectWord = cell.entries.some((entry) => results.get(entry.id));
+    const belongsToCorrectWord = cell.entries.some((entry) =>
+      results.get(entry.id),
+    );
     cell.box.classList.toggle("correct", belongsToCorrectWord);
-    cell.box.classList.toggle("incorrect", !belongsToCorrectWord && Boolean(cell.input.value));
+    cell.box.classList.toggle(
+      "incorrect",
+      !belongsToCorrectWord && Boolean(cell.input.value),
+    );
   }
 
   setScore(correctCount);
@@ -388,17 +563,20 @@ function checkAnswers() {
     const firstWin = !finished;
     finished = true;
     stopTimer();
-    $("#feedback").textContent = `Circuito completo! Você conectou os 16 conceitos em ${$("#timer").textContent}. Mandou bem!`;
+    $("#feedback").textContent =
+      `Circuito completo! Você conectou os 16 conceitos em ${$("#timer").textContent}. Mandou bem!`;
     if (firstWin) {
       celebrate();
       playTone(660);
       window.setTimeout(() => playTone(790), 130);
     }
   } else if (correctCount > 0) {
-    $("#feedback").textContent = `${correctCount} conexões certas. As pistas mostram exatamente o que ainda precisa de revisão.`;
+    $("#feedback").textContent =
+      `${correctCount} conexões certas. As pistas mostram exatamente o que ainda precisa de revisão.`;
     playTone(490);
   } else {
-    $("#feedback").textContent = "Ainda não há palavras corretas. Volte às pistas e tente mais uma vez.";
+    $("#feedback").textContent =
+      "Ainda não há palavras corretas. Volte às pistas e tente mais uma vez.";
     playTone(300);
   }
 }
@@ -420,7 +598,8 @@ function resetGame() {
   checked = false;
   renderTime();
   setScore(0);
-  $("#feedback").textContent = "Tudo zerado. Uma nova tentativa, um novo circuito.";
+  $("#feedback").textContent =
+    "Tudo zerado. Uma nova tentativa, um novo circuito.";
   $("#celebration").replaceChildren();
   $("#reset-dialog").close();
   selectEntry(entries[0]);
@@ -435,7 +614,9 @@ function configureFilters() {
         option.setAttribute("aria-pressed", String(selected));
       }
       for (const section of document.querySelectorAll(".clue-section")) {
-        section.hidden = button.dataset.filter !== "all" && section.dataset.dir !== button.dataset.filter;
+        section.hidden =
+          button.dataset.filter !== "all" &&
+          section.dataset.dir !== button.dataset.filter;
       }
     });
   }
@@ -444,7 +625,8 @@ function configureFilters() {
 function playTone(frequency = 420) {
   if (!soundOn) return;
   try {
-    audioContext = audioContext || new (window.AudioContext || window.webkitAudioContext)();
+    audioContext =
+      audioContext || new (window.AudioContext || window.webkitAudioContext)();
     if (audioContext.state === "suspended") audioContext.resume();
     const oscillator = audioContext.createOscillator();
     const gain = audioContext.createGain();
@@ -453,7 +635,10 @@ function playTone(frequency = 420) {
     oscillator.type = "square";
     oscillator.frequency.value = frequency;
     gain.gain.setValueAtTime(0.035, audioContext.currentTime);
-    gain.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.11);
+    gain.gain.exponentialRampToValueAtTime(
+      0.001,
+      audioContext.currentTime + 0.11,
+    );
     oscillator.start();
     oscillator.stop(audioContext.currentTime + 0.12);
   } catch (error) {
@@ -479,12 +664,17 @@ function celebrate() {
 function bindControls() {
   $("#check").addEventListener("click", checkAnswers);
   $("#reset").addEventListener("click", () => $("#reset-dialog").showModal());
-  $("#cancel-reset").addEventListener("click", () => $("#reset-dialog").close());
+  $("#cancel-reset").addEventListener("click", () =>
+    $("#reset-dialog").close(),
+  );
   $("#confirm-reset").addEventListener("click", resetGame);
   $("#sound").addEventListener("click", () => {
     soundOn = !soundOn;
     $("#sound").setAttribute("aria-pressed", String(soundOn));
-    $("#sound").setAttribute("aria-label", soundOn ? "Desativar sons do jogo" : "Ativar sons do jogo");
+    $("#sound").setAttribute(
+      "aria-label",
+      soundOn ? "Desativar sons do jogo" : "Ativar sons do jogo",
+    );
     $("#sound-state").textContent = soundOn ? "SOM ON" : "SOM OFF";
     if (soundOn) playTone(540);
   });
